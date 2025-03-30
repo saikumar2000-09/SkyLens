@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SkyLens</title>
+    <style>
+        body { background:blue; font-family: Arial; max-width: 800px; margin: auto; padding: 20px; }
+        .upload-form { border: 2px dashed #ccc; padding: 20px; margin: 20px 0; border-radius: 5px; }
+        .image-item { margin: 20px 0; border: 1px solid #ccc; padding: 10px; border-radius: 5px; }
+        .image-preview { max-width: 300px; height: auto; display: block; margin: 10px 0; }
+        .title { font-weight: bold; font-size: 18px; }
+        .desc { font-size: 14px; color: #555; }
+    </style>
+</head>
+<body>
+    <h1>SkyLens</h1>
+    
+    <div class="upload-form">
+        <form method="post" enctype="multipart/form-data" action="/upload">
+            <label>Choose JPEG image to upload</label><br>
+            <input type="file" name="form_file" accept="image/jpeg,image/jpg" required><br><br>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Uploaded Images</h2>
+        {% for file in files %}
+        <div class="image-item">
+            <a href="/files/{{ file.name }}" download="{{ file.name }}">
+                <img src="/files/{{ file.name }}" class="image-preview" alt="{{ file.name }}">
+            </a>
+            <div class="title">{{ file.title }}</div>
+            <div class="desc">{{ file.description }}</div>
+        </div>
+        
+        {% endfor %}
+    </div>
+</body>
+</html>

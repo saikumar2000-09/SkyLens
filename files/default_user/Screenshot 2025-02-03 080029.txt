@@ -1,0 +1,2 @@
+Weighted Directed Graph
+A directed graph with weighted edges.  The numbers on the edges represent the weights.  Nodes are numbered 1 through 7.
